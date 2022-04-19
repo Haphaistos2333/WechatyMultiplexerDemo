@@ -1,14 +1,13 @@
 Demoed by Haphaistos2333(liu.tong1@outlook.com). 2022. All rights reserved.
 
-本DEMO拟在演示一种可行的复用BOT的方法。本方法通过类装饰器模式，将消息入口和逻辑解耦，测
-  试人员通过向消息框输入Switch bot <逻辑包名>来切换自己的后台处理逻辑。解耦后，应用将通
-  过逻辑包的形式发布上线。逻辑包里有外部可以引用的Bot。
+本DEMO拟在演示一种可行的复用BOT做消息回应的方法。本方法通过装饰器模式，将消息入口和逻辑解耦，测试人员通过向消息框输入Switch bot <逻辑包名>来切换自
+己的后台消息处理逻辑。解耦后，消息回复逻辑将通过Python module的形式发布上线。module里有外部可以引用的Bot。
 
 文件目录结构:
  - .git/
  - 说明文件、版权文件、配置脚本
  - start.py
- - BotLogics
+ - BotLogics 下面包括多套消息处理逻辑
    |- Logic1
    |  |- __init__.py
    |  |- 其它完整的代码逻辑、资源文件
@@ -17,3 +16,6 @@ Demoed by Haphaistos2333(liu.tong1@outlook.com). 2022. All rights reserved.
    |  |- 其它完整的代码逻辑、资源文件
 
 鉴于当前wechaty环境有限，先用stdio模拟输入输出过程，实际编码替换为相应消息处理函数即可。
+
+优点：对于大部分依赖消息交互的逻辑功能，可以提升效率。如：消息关键词匹配、消息数据写表等。
+缺点：不能复用bot测试群组管理等功能。如：群名监控、加群管理等。
